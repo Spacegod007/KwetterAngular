@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { UserinformationComponent } from './blocks/userinformation/userinformation.component';
-import { TweetsComponent } from './blocks/tweets/tweets.component';
-import { TweetComponent } from './blocks/tweet/tweet.component';
-import { FollowersComponent } from './blocks/followers/followers.component';
-import { FollowerComponent } from './blocks/follower/follower.component';
+import { UserinformationComponent } from './pages/modules/userinformation/userinformation.component';
+import { TweetsComponent } from './pages/modules/tweets/tweets.component';
+import { TweetComponent } from './pages/modules/tweet/tweet.component';
+import { FollowersComponent } from './pages/modules/followers/followers.component';
+import { FollowerComponent } from './pages/modules/follower/follower.component';
 
 
 @NgModule({
