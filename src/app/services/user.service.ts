@@ -13,7 +13,7 @@ export class UserService {
   constructor() { }
 
   getUser(id: number): Observable<User> {
-    return of(this.mockdata.users.find(user => user.id === id));
+    return of(this.mockdata.users.find(user => user.id == id));
   }
 
   getFollowers(id: number): Observable<User[]> {

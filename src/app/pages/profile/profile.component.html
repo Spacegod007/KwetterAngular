@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="user$ | async; let user">
     <app-tweets [user]="user" class="col-6"></app-tweets>
     <div class="col-6">
       <app-userinformation [user]="user"></app-userinformation>
