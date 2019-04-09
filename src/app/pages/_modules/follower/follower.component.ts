@@ -10,7 +10,7 @@ import {NavigationEnd, Router} from "@angular/router";
 export class FollowerComponent implements OnInit {
   @Input() user: User;
   constructor(private router: Router) {
-    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+    this.router.routeReuseStrategy.shouldReuseRoute = function shouldReuseRoute() {
       return false;
     }
 

@@ -6,9 +6,11 @@ import {MockData} from './mockdata';
   providedIn: 'root'
 })
 export class TweetService {
-  mockdata: MockData = new MockData();
+  mockdata: MockData;
 
-  constructor() { }
+  constructor() {
+    this.mockdata = new MockData();
+  }
 
   getTweet(id: number): Tweet {
     return this.mockdata.tweets.find(tweet => tweet.id === id);

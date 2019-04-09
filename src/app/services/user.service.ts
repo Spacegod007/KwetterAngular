@@ -8,23 +8,25 @@ import {MockData} from './mockdata';
   providedIn: 'root'
 })
 export class UserService {
-  mockdata: MockData = new MockData();
+  mockdata: MockData;
 
-  constructor() { }
+  constructor() {
+    this.mockdata = new MockData();
+  }
 
   getUser(id: number): Observable<User> {
     return of(this.mockdata.users.find(user => user.id == id));
   }
 
   getFollowers(id: number): Observable<User[]> {
-    return of(this.mockdata.users.filter(user => user.following.find(followerId => followerId === id)));
+    return of(this.mockdata.users.filter(user => user.following.find(follower => follower.id === id)));
   }
 
   getFollowing(id: number): Observable<User[]> {
-    return of(this.mockdata.users.filter(user => user.followers.find(followerId => followerId === id)));
+    return of(this.mockdata.users.filter(user => user.followers.find(follower => follower.id === id)));
   }
 
   getUserTweets(id: number): Observable<Tweet[]> {
-    return of(this.mockdata.tweets.filter(tweet => tweet.sender.id === id));
+    return of(this.mockdata.tweets.filter(tweet => tweet.author.id === id));
   }
 }

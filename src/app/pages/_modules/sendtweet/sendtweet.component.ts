@@ -21,7 +21,7 @@ export class SendtweetComponent implements OnInit {
     console.log(this.tweetText);
 
     // var tweet = new Tweet();
-    // tweet.sender = this.user;
+    // tweet.author = this.user;
     // tweet.text = this.tweetText;
 
     //todo send tweet

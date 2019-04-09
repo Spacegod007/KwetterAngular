@@ -1,33 +1,40 @@
 import {User} from '../models/User';
 import {Tweet} from '../models/Tweet';
+import {stringify} from 'querystring';
 
 export class MockData {
-  testUser: User = {id: 1, name: 'Jordi', biography: 'I am the developer of Kwetter.', website: null,
-    followers: [2, 3, 4, 5, 6, 7], following: [8, 9, 10, 11, 12, 13], tweets: [1, 2, 3, 4, 5, 6, 7]};
+  testUser: User;
+  users: User[] = [];
+  tweets: Tweet[] = [];
 
-  users: User[] = [
-    this.testUser,
-    { id: 2, name: 'test follower 1', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 3, name: 'test follower 2', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 4, name: 'test follower 3', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 5, name: 'test follower 4', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 6, name: 'test follower 5', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 7, name: 'test follower 6', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 8, name: 'test following 1', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 9, name: 'test following 2', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 10, name: 'test following 3', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 11, name: 'test following 4', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 12, name: 'test following 5', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 13, name: 'test following 6', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []}
-  ];
-
-  tweets: Tweet[] = [
-    { id: 1, text: 'test tweet 1 text', sender: this.testUser},
-    { id: 2, text: 'test tweet 2 text', sender: this.testUser},
-    { id: 3, text: 'test tweet 3 text', sender: this.testUser},
-    { id: 4, text: 'test tweet 4 text', sender: this.testUser},
-    { id: 5, text: 'test tweet 5 text', sender: this.testUser},
-    { id: 6, text: 'test tweet 6 text', sender: this.testUser},
-    { id: 7, text: 'test tweet 7 text', sender: this.testUser}
-  ];
+  constructor() {
+    this.testUser = {
+      id: 1, name: 'Jordi', password: '', biography: 'I am the developer of Kwetter.', website: null,
+      followers: [], following: [], tweets: []
+    };
+    this.users.push(this.testUser);
+    let i: number;
+    for (i = 2; i < 8; i++) {
+      const follower: User = {
+        id: i, name: 'test follower ' + (i - 1).toString(), password: '', biography: 'bio', website: 'web',
+        followers: [], following: [this.testUser], tweets: []
+      };
+      this.testUser.followers.push(follower);
+      this.users.push(follower);
+    }
+    for (i = 8; i < 14; i++) {
+      const following: User = {
+        id: i, name: 'test following ' + (i - 7).toString(), password: '', biography: 'bio', website: 'web',
+        followers: [this.testUser], following: [], tweets: []
+      };
+      this.testUser.following.push(following);
+      this.users.push(following);
+    }
+    for (i = 1; i < 8; i++) {
+      const tweet: Tweet = { id: i, text: 'test tweet ' + i.toString() + ' text', date: new Date(),
+        reactions: [], responseToTweet: null, author: this.testUser};
+      this.testUser.tweets.push(tweet);
+      this.tweets.push(tweet);
+    }
+  }
 }
