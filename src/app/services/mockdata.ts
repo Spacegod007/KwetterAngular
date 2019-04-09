@@ -7,18 +7,18 @@ export class MockData {
 
   users: User[] = [
     this.testUser,
-    { id: 2, name: 'test follower 1', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 3, name: 'test follower 2', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 4, name: 'test follower 3', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 5, name: 'test follower 4', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 6, name: 'test follower 5', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 7, name: 'test follower 6', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
-    { id: 8, name: 'test following 1', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 9, name: 'test following 2', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 10, name: 'test following 3', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 11, name: 'test following 4', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 12, name: 'test following 5', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
-    { id: 13, name: 'test following 6', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []}
+    { id: 2, name: 'test follower 1', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
+    { id: 3, name: 'test follower 2', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
+    { id: 4, name: 'test follower 3', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
+    { id: 5, name: 'test follower 4', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
+    { id: 6, name: 'test follower 5', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
+    { id: 7, name: 'test follower 6', biography: 'bio', website: 'web', followers: [], following: [1], tweets: []},
+    { id: 8, name: 'test following 1', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
+    { id: 9, name: 'test following 2', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
+    { id: 10, name: 'test following 3', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
+    { id: 11, name: 'test following 4', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
+    { id: 12, name: 'test following 5', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []},
+    { id: 13, name: 'test following 6', biography: 'bio', website: 'web', followers: [1], following: [], tweets: []}
   ];
 
   tweets: Tweet[] = [

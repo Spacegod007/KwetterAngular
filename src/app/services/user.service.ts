@@ -17,11 +17,11 @@ export class UserService {
   }
 
   getFollowers(id: number): Observable<User[]> {
-    return of(this.mockdata.users.filter(user => user.followers.find(followerId => followerId === id)));
+    return of(this.mockdata.users.filter(user => user.following.find(followerId => followerId === id)));
   }
 
   getFollowing(id: number): Observable<User[]> {
-    return of(this.mockdata.users.filter(user => user.following.find(followerId => followerId === id)));
+    return of(this.mockdata.users.filter(user => user.followers.find(followerId => followerId === id)));
   }
 
   getUserTweets(id: number): Observable<Tweet[]> {
