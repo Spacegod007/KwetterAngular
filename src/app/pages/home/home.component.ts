@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Observable} from "rxjs";
 import {User} from "../../models/User";
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,13 @@ import {User} from "../../models/User";
 export class HomeComponent implements OnInit {
   user$: Observable<User>;
 
-  constructor(private userService: UserService) { }
-
+  constructor(private userService: UserService,
+              private cookieService: CookieService) { }
   ngOnInit() {
-    const loggedInUserSimulationId: number = 1;
+    this.user$ = this.userService.getUser(1);
 
-    this.user$ = this.userService.getUser(loggedInUserSimulationId);
+    this.user$.subscribe(result => {
+      this.cookieService.set('currentUser', JSON.stringify(result));
+    })
   }
 }

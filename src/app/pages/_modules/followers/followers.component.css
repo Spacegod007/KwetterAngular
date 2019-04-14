@@ -2,6 +2,7 @@ h3 {
   text-align: center;
 }
 
-li {
-  display:inline-block;
+ul {
+  text-align: center;
+  list-style: none;
 }

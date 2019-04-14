@@ -9,20 +9,9 @@ import {NavigationEnd, Router} from "@angular/router";
 })
 export class FollowerComponent implements OnInit {
   @Input() user: User;
-  constructor(private router: Router) {
-    this.router.routeReuseStrategy.shouldReuseRoute = function shouldReuseRoute() {
-      return false;
-    }
-
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-        this.router.navigated = false;
-        window.scrollTo(0, 0);
-      }
-    });
+  constructor() {
   }
 
   ngOnInit() {
   }
-
 }

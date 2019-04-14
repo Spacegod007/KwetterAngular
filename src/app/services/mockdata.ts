@@ -24,7 +24,7 @@ export class MockData {
     }
     for (i = 8; i < 14; i++) {
       const following: User = {
-        id: i, name: 'test following ' + (i - 7).toString(), password: '', biography: 'bio', website: 'web',
+        id: i, name: 'test following$ ' + (i - 7).toString(), password: '', biography: 'bio', website: 'web',
         followers: [this.testUser], following: [], tweets: []
       };
       this.testUser.following.push(following);

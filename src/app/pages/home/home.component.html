@@ -1,4 +1,6 @@
 <div class="container">
-  <a routerLink="/profile/1">test</a>
-  <app-sendtweet></app-sendtweet>
+  <div *ngIf="user$ | async; let user">
+    <app-sendtweet [user]="user"></app-sendtweet>
+    <app-tweets [user]="user"></app-tweets>
+  </div>
 </div>

@@ -1,5 +1,9 @@
-<h1 class="name">{{user.name}}</h1>
-<p class="text">{{user.biography}}</p>
-<div *ngIf="user.website">
-  <a href="{{user.website}}">My website</a>
+<div class="card" style="margin: 5%;">
+  <h1 class="card-header">{{user.name}}</h1>
+  <div class="card-body">
+    <p>{{user.biography}}</p>
+    <div *ngIf="user.website">
+      <a href="{{user.website}}">My website</a>
+    </div>
+  </div>
 </div>

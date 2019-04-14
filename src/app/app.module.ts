@@ -11,6 +11,11 @@ import { FollowersComponent } from './pages/_modules/followers/followers.compone
 import { FollowerComponent } from './pages/_modules/follower/follower.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SendtweetComponent } from './pages/_modules/sendtweet/sendtweet.component';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { CookieService } from 'ngx-cookie-service';
+import { NavbarComponent } from './pages/_modules/navbar/navbar.component';
+import { UsersearchComponent } from './pages/_modules/usersearch/usersearch.component';
 
 
 @NgModule({
@@ -24,12 +29,18 @@ import { SendtweetComponent } from './pages/_modules/sendtweet/sendtweet.compone
     FollowerComponent,
     HomeComponent,
     SendtweetComponent,
+    NavbarComponent,
+    UsersearchComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
