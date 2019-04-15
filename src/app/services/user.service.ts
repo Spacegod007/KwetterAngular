@@ -37,7 +37,7 @@ export class UserService {
 
   getLatestTweets(id: number): Observable<Tweet[]>
   {
-    const url = `${this.baseUrl}/latesttweets`;
+    const url = `${this.baseUrl}/${id}/latesttweets`;
     return this.httpClient.get<Tweet[]>(url);
   }
 
@@ -75,5 +75,10 @@ export class UserService {
   findUsers(tag: string): Observable<User[]> {
     const url = `${this.baseUrl}/search/${tag}`;
     return this.httpClient.get<User[]>(url);
+  }
+
+  getUserFeed(id: number): Observable<Tweet[]> {
+    const url = `${this.baseUrl}/${id}/feed`;
+    return this.httpClient.get<Tweet[]>(url);
   }
 }

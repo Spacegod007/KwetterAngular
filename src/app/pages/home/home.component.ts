@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService,
               private cookieService: CookieService) { }
   ngOnInit() {
-    this.user$ = this.userService.getUser(1);
+    this.user$ = this.userService.getUser(2);
 
     this.user$.subscribe(result => {
       this.cookieService.set('currentUser', JSON.stringify(result));

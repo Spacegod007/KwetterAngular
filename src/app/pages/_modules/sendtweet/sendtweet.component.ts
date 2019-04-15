@@ -28,5 +28,13 @@ export class SendtweetComponent implements OnInit {
     this.tweetService.sendTweet(tweet).subscribe(result =>{
       this.user.tweets.unshift(result);
     });
+    this.tweetText = "";
+  }
+
+  trySend($event: KeyboardEvent) {
+    if ($event.key === "Enter")
+    {
+      this.sendTweet();
+    }
   }
 }

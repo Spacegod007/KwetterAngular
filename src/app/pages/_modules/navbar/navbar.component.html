@@ -1,5 +1,10 @@
 <div class="topnav">
-  <a routerLink="/home">Home</a>
-  <a routerLink="/profile/1">Profiel pagina</a>
+  <div class="pre-searchbar">
+    <a routerLink="/home">Home</a>
+    <a routerLink="/profile/1">Profiel pagina</a>
+  </div>
   <app-usersearch></app-usersearch>
+  <div class="suf-searchbar">
+    <label class="text-white">{{user.name}}</label>
+  </div>
 </div>

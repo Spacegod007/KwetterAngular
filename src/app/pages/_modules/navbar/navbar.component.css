@@ -23,3 +23,9 @@
   background-color: #4CAF50;
   color: white;
 }
+
+.suf-searchbar {
+  margin-top: 1%;
+  float: right;
+  margin-right: 2%;
+}
