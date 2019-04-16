@@ -1,10 +1,14 @@
 <div class="topnav">
   <div class="pre-searchbar">
     <a routerLink="/home">Home</a>
-    <a routerLink="/profile/1">Profiel pagina</a>
+    <div *ngIf="user">
+      <a routerLink="/profile/{{user.id}}">Profile page</a>
+    </div>
   </div>
-  <app-usersearch></app-usersearch>
-  <div class="suf-searchbar">
-    <label class="text-white">{{user.name}}</label>
+<app-usersearch></app-usersearch>
+  <div class="suf-searchbar-text">
+    <div *ngIf="user">
+      <label class="text-white">{{user.name}}</label>
+    </div>
   </div>
 </div>

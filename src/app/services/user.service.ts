@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
 import {User} from '../models/User';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Tweet} from '../models/Tweet';
-import {MockData} from './mockdata';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-    // mockdata: MockData;
   baseUrl: string = 'http://localhost:8080/Kwetter/api/users';
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  httpOptions = { headers: new HttpHeaders(
+    {
+      'Content-Type': 'application/json',
+      'Authorization': this.cookieService.get('access_token')
+    }) };
 
-  constructor(private httpClient: HttpClient) {
-    // this.mockdata = new MockData();
-  }
+  constructor(private httpClient: HttpClient,
+              private cookieService: CookieService) { }
 
   getUser(id: number): Observable<User> {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.get<User>(url, this.httpOptions);
-    // return of(this.mockdata.users.find(user => user.id == id));
+    return this.httpClient.get<User>(url);
   }
 
   getFollowers(id: number): Observable<User[]> {
     const url = `${this.baseUrl}/${id}/followers`;
     return this.httpClient.get<User[]>(url);
-    // return of(this.mockdata.users.filter(user => user.following$.find(follower => follower.id === id)));
   }
 
   getFollowing(id: number): Observable<User[]> {
     const url = `${this.baseUrl}/${id}/following`;
     return this.httpClient.get<User[]>(url);
-    // return of(this.mockdata.users.filter(user => user.followers$.find(follower => follower.id === id)));
   }
 
   getLatestTweets(id: number): Observable<Tweet[]>
@@ -44,7 +43,6 @@ export class UserService {
   getUserTweets(id: number): Observable<Tweet[]> {
     const url = `${this.baseUrl}/${id}/tweets`;
     return this.httpClient.get<Tweet[]>(url);
-    // return of(this.mockdata.tweets.filter(tweet => tweet.author.id === id));
   }
 
   registerUser(user: User): Observable<User> {

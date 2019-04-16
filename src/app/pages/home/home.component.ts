@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../services/user.service";
 import {Observable} from "rxjs";
 import {User} from "../../models/User";
-import {CookieService} from 'ngx-cookie-service';
+import {AuthenticateService} from "../../services/authenticate.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,13 +12,15 @@ import {CookieService} from 'ngx-cookie-service';
 export class HomeComponent implements OnInit {
   user$: Observable<User>;
 
-  constructor(private userService: UserService,
-              private cookieService: CookieService) { }
-  ngOnInit() {
-    this.user$ = this.userService.getUser(2);
+  constructor(private authenticateService: AuthenticateService,
+              private router: Router) { }
 
-    this.user$.subscribe(result => {
-      this.cookieService.set('currentUser', JSON.stringify(result));
-    })
+  ngOnInit() {
+    if (this.authenticateService.isLoggedIn())
+    {
+      this.user$ = this.authenticateService.getLoggedInUser();
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

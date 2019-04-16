@@ -3,7 +3,6 @@ import {User} from '../../models/User';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from "rxjs";
-import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profile',

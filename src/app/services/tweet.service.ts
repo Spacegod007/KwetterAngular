@@ -1,25 +1,27 @@
 import { Injectable } from '@angular/core';
 import {Tweet} from '../models/Tweet';
-import {MockData} from './mockdata';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TweetService {
-  // mockdata: MockData;
   baseUrl: string = 'http://localhost:8080/Kwetter/api/tweets';
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  httpOptions = { headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'Authorization': this.cookieService.get('access_token')
+      }) };
 
-  constructor(private httpClient: HttpClient) {
-    // this.mockdata = new MockData();
+  constructor(private httpClient: HttpClient,
+              private cookieService: CookieService) {
   }
 
   getTweet(id: number): Observable<Tweet> {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.get<Tweet>(url);
-    // return this.mockdata.tweets.find(tweet => tweet.id === id);
   }
 
   getTweetReactions(id: number): Observable<Tweet[]> {

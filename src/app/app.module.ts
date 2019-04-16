@@ -12,10 +12,11 @@ import { FollowerComponent } from './pages/_modules/follower/follower.component'
 import { HomeComponent } from './pages/home/home.component';
 import { SendtweetComponent } from './pages/_modules/sendtweet/sendtweet.component';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from './pages/_modules/navbar/navbar.component';
 import { UsersearchComponent } from './pages/_modules/usersearch/usersearch.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -31,12 +32,14 @@ import { UsersearchComponent } from './pages/_modules/usersearch/usersearch.comp
     SendtweetComponent,
     NavbarComponent,
     UsersearchComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CookieService

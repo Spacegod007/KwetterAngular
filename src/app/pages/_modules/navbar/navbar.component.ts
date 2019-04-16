@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {User} from "../../../models/User";
+import {AuthenticateService} from "../../../services/authenticate.service";
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,15 @@ import {User} from "../../../models/User";
 export class NavbarComponent implements OnInit {
   user: User;
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService,
+              private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.user = JSON.parse(this.cookieService.get('currentUser'))
+    if (this.authenticateService.isLoggedIn())
+    {
+      this.authenticateService.getLoggedInUser().subscribe(result => {
+        this.user = result;
+      });
+    }
   }
-
 }
