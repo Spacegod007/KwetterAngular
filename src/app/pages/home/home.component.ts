@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     {
       this.user$ = this.authenticateService.getLoggedInUser();
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate([`/login`]);
     }
   }
 }

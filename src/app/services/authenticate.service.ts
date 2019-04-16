@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {retry, tap} from "rxjs/operators";
@@ -12,6 +12,8 @@ import {UserService} from "./user.service";
 export class AuthenticateService {
   baseUrl: string = 'http://localhost:8080/Kwetter/api/authentication';
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
+  userChanged: EventEmitter<User>;
 
   constructor(private httpClient: HttpClient,
               private cookieService: CookieService,
@@ -37,5 +39,9 @@ export class AuthenticateService {
   {
     const id: number = JSON.parse(this.cookieService.get('userId'));
     return this.userService.getUser(id);
+  }
+
+  logout() {
+    this.cookieService.deleteAll();
   }
 }

@@ -3,7 +3,6 @@ import {FormControl} from "@angular/forms";
 import {AuthenticateService} from "../../services/authenticate.service";
 import {CookieService} from "ngx-cookie-service";
 import {Router} from "@angular/router";
-import {retry, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +19,8 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-}
+    this.cookieService.deleteAll();
+  }
 
   login() {
     const name: string = this.name.value;
@@ -32,9 +32,5 @@ export class LoginComponent implements OnInit {
 
   loginSucceeded() {
     this.router.navigate([`/home`]);
-  }
-
-  catchError() {
-    console.log()
   }
 }

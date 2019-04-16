@@ -25,7 +25,11 @@
 }
 
 .suf-searchbar-text {
-  margin-top: 1%;
   float: right;
   margin-right: 2%;
+}
+
+.suf-searchbar-text a {
+  float: right;
+  margin-top: 1%;
 }
