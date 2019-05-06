@@ -1,0 +1,2 @@
+<button class="btn btn-primary" *ngIf="allowButton && !isFollowing" (click)="follow()">Follow</button>
+<button class="btn btn-primary" *ngIf="allowButton && isFollowing" (click)="unfollow()">UnFollow</button>

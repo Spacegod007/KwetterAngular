@@ -27,10 +27,13 @@ export class TweetsComponent implements OnInit {
   {
     switch (type) {
       case ViewTweetType.ALL:
+        console.log('ALL');
         return this.userService.getUserTweets(this.user.id);
       case ViewTweetType.NEWEST:
+        console.log('NEWEST');
         return this.userService.getLatestTweets(this.user.id);
       case ViewTweetType.FEED:
+        console.log('FEED');
         return this.userService.getUserFeed(this.user.id);
     }
   }

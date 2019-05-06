@@ -34,15 +34,20 @@ export class UserService {
     return this.httpClient.get<User[]>(url);
   }
 
+  getUserTweets(id: number): Observable<Tweet[]> {
+    const url = `${this.baseUrl}/${id}/tweets`;
+    return this.httpClient.get<Tweet[]>(url);
+  }
+
   getLatestTweets(id: number): Observable<Tweet[]>
   {
     const url = `${this.baseUrl}/${id}/latesttweets`;
     return this.httpClient.get<Tweet[]>(url);
   }
 
-  getUserTweets(id: number): Observable<Tweet[]> {
-    const url = `${this.baseUrl}/${id}/tweets`;
-    return this.httpClient.get<Tweet[]>(url);
+  getUserFeed(id: number): Observable<Tweet[]> {
+    const url = `${this.baseUrl}/${id}/feed`;
+    return this.httpClient.get<Tweet[]>(url, this.httpOptions);
   }
 
   registerUser(user: User): Observable<User> {
@@ -55,14 +60,14 @@ export class UserService {
     return this.httpClient.put<User>(url, user, this.httpOptions);
   }
 
-  followUser(id: number, followId: number): void {
+  followUser(id: number, followId: number) {
     const url = `${this.baseUrl}/${id}/follow/${followId}`;
-    this.httpClient.put(url, null);
+    return this.httpClient.put(url, null);
   }
 
-  unFollowUser(id: number, unfollowId: number): void {
+  unFollowUser(id: number, unfollowId: number) {
     const url = `${this.baseUrl}/${id}/unfollow/${unfollowId}`;
-    this.httpClient.put(url, null);
+    return this.httpClient.put(url, null);
   }
 
   removeUser(id: number): void {
@@ -73,10 +78,5 @@ export class UserService {
   findUsers(tag: string): Observable<User[]> {
     const url = `${this.baseUrl}/search/${tag}`;
     return this.httpClient.get<User[]>(url);
-  }
-
-  getUserFeed(id: number): Observable<Tweet[]> {
-    const url = `${this.baseUrl}/${id}/feed`;
-    return this.httpClient.get<Tweet[]>(url);
   }
 }

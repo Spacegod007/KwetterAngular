@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginSucceeded() {
-    this.router.navigate([`/home`]);
+    //this.router.navigate([`/home`]);
+    location.href = '/home';
   }
 }

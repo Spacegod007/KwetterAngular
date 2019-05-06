@@ -25,9 +25,9 @@ export class AuthenticateService {
     const url = `${this.baseUrl}/login`;
     return this.httpClient.post<{access_token: string, userId: number}>(url, { 'username': username, 'password': password }, this.httpOptions)
       .pipe(tap(result => {
-      this.cookieService.set("access_token", result.access_token);
-      this.cookieService.set("userId", JSON.stringify(result.userId));
-    }), retry(1));
+        this.cookieService.set("access_token", result.access_token);
+        this.cookieService.set("userId", JSON.stringify(result.userId));
+      }), retry(1));
   }
 
   isLoggedIn(): boolean

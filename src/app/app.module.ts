@@ -17,6 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from './pages/_modules/navbar/navbar.component';
 import { UsersearchComponent } from './pages/_modules/usersearch/usersearch.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FollowComponent } from './pages/_modules/follow/follow.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { LoginComponent } from './pages/login/login.component';
     NavbarComponent,
     UsersearchComponent,
     LoginComponent,
+    FollowComponent,
   ],
   imports: [
     BrowserModule,

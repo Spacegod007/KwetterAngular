@@ -14,13 +14,9 @@ export class SendtweetComponent implements OnInit {
 
   tweetText: string;
 
-  constructor(private tweetService: TweetService,
-              private userService: UserService) { }
+  constructor(private tweetService: TweetService) { }
 
   ngOnInit() {
-    this.userService.getUserTweets(this.user.id).subscribe(result => {
-      this.user.tweets = result
-    });
   }
 
   sendTweet() {

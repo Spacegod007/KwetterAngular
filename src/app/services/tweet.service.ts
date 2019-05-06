@@ -9,11 +9,13 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class TweetService {
   baseUrl: string = 'http://localhost:8080/Kwetter/api/tweets';
-  httpOptions = { headers: new HttpHeaders(
+  httpOptions = {
+    headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
         'Authorization': this.cookieService.get('access_token')
-      }) };
+      })
+  };
 
   constructor(private httpClient: HttpClient,
               private cookieService: CookieService) {
