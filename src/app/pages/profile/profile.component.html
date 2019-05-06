@@ -1,9 +1,12 @@
 <div class="container">
-  <div class="row">
-    <app-tweets class="col"></app-tweets>
-    <div class="col">
+  <div class="row" *ngIf="user$ | async; let user">
+    <app-tweets [user]="user" [viewType]="3" class="col-6"></app-tweets>
+    <div class="col-6">
+      <!--<div *ngIf="isLoggedIn">-->
+        <!--<app-follow [followUser]="user"></app-follow>-->
+      <!--</div>-->
       <app-userinformation [user]="user"></app-userinformation>
-      <app-followers></app-followers>
+      <app-followers [user]="user"></app-followers>
     </div>
   </div>
 </div>

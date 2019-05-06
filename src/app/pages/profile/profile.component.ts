@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
+import {UserService} from '../../services/user.service';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from "rxjs";
+import {AuthenticateService} from "../../services/authenticate.service";
 
 @Component({
   selector: 'app-profile',
@@ -7,16 +11,17 @@ import {User} from '../../models/User';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User = {
-    id: 1,
-    name: 'Jordi',
-    biography: 'I am the developer of Kwetter.',
-    website: null
-  };
+  user$: Observable<User>;
+  isLoggedIn: boolean;
 
-  constructor() { }
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.user$ = this.userService.getUser(params.id);
+    });
+    this.isLoggedIn = this.authenticateService.isLoggedIn();
   }
-
 }

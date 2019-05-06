@@ -1,0 +1,17 @@
+<div class="topnav">
+  <div class="pre-searchbar">
+    <div *ngIf="user">
+      <a routerLink="/home">Home</a>
+      <a routerLink="/profile/{{user.id}}">Profile page</a>
+    </div>
+  </div>
+<app-usersearch></app-usersearch>
+  <div class="suf-searchbar-text">
+    <div *ngIf="!user || router.url === '/login'">
+      <a routerLink="/login" style="float: right;">Login</a>
+    </div>
+    <div *ngIf="user && router.url !== '/login'">
+      <a style="float: right;" (click)="logout()">Logout</a>
+    </div>
+  </div>
+</div>

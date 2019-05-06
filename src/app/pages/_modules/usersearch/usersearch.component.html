@@ -1,0 +1,6 @@
+<input class="form-control searchbar" list="users" placeholder="Search user" aria-label="Search" [(ngModel)]="searchText" (keyup)="typing()">
+<datalist id="users">
+  <div *ngFor="let user of foundUsers">
+    <option>{{user.name}}</option>
+  </div>
+</datalist>

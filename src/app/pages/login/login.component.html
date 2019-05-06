@@ -1,0 +1,16 @@
+<div style="margin-top: 3%" class="container">
+  <div class="card">
+    <h1 class="text-primary card-header">Login</h1>
+    <form (keyup.Enter)="login()" class="card-body">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input [formControl]="name" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input [formControl]="password" type="password" class="form-control" id="password" placeholder="Password">
+      </div>
+      <button (click)="login()" style="margin-top: 2%" type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>

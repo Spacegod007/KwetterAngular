@@ -1,0 +1,6 @@
+<div class="container">
+  <div *ngIf="user$ | async; let user">
+    <app-sendtweet [user]="user"></app-sendtweet>
+    <app-tweets [user]="user" [viewType]="2"></app-tweets>
+  </div>
+</div>

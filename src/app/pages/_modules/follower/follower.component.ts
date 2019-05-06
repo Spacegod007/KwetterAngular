@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from '../../models/User';
+import {User} from '../../../models/User';
+import {NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-follower',
@@ -8,9 +9,9 @@ import {User} from '../../models/User';
 })
 export class FollowerComponent implements OnInit {
   @Input() user: User;
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }
